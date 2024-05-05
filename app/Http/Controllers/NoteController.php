@@ -60,7 +60,7 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        return '<b>Editar nota:</b> '.$note->title;
+        return view('notes.edit', ['note' => $note]);
     }
 
     /**
@@ -68,7 +68,7 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        return 'Updating: '.$note->title;
     }
 
     /**
