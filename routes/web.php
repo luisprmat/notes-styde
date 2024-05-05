@@ -8,7 +8,9 @@ Route::get('/home', function () {
 })->name('home');
 
 Route::get('/notas', function () {
-    $notes = DB::table('notes')->get();
+    $notes = DB::table('notes')
+        ->latest('id')
+        ->get();
 
     return view('notes.index', [
         'notes' => $notes,
@@ -16,7 +18,11 @@ Route::get('/notas', function () {
 })->name('notes.index');
 
 Route::get('/notas/{id}', function ($id) {
-    return 'Detalle de la nota: '.$id;
+    $note = DB::table('notes')->find($id);
+
+    abort_if($note === null, 404);
+
+    return '<b>Detalle de la nota:</b> '.$note->title;
 })->name('notes.show');
 
 Route::get('/notas/crear', function () {
