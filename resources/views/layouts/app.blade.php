@@ -13,13 +13,19 @@
 
             <nav class="main-nav">
                 <ul class="main-nav-list">
-                    <li class="main-nav-item active">
+                    <li @class([
+                        'main-nav-item',
+                        'active' => request()->routeIs('notes.index')
+                    ])>
                         <a href="{{ route('notes.index') }}" class="main-nav-link">
                             <i class="icon icon-th-list"></i>
                             <span>Ver notas</span>
                         </a>
                     </li>
-                    <li class="main-nav-item">
+                    <li @class([
+                        'main-nav-item',
+                        'active' => request()->routeIs('notes.create')
+                    ])>
                         <a href="{{ route('notes.create') }}" class="main-nav-link">
                             <i class="icon icon-pen"></i>
                             <span>Nueva nota</span>
