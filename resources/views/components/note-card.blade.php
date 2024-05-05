@@ -2,9 +2,9 @@
     <div class="card-body">
         <h4>{{ $note->title }}</h4>
 
-        <p>
-            {{ $note->content }}
-        </p>
+        <div>
+            {{ $renderContent }}
+        </div>
     </div>
 
     <footer class="card-footer">
