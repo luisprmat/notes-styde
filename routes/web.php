@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Note;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -8,8 +9,7 @@ Route::get('/home', function () {
 })->name('home');
 
 Route::get('/notas', function () {
-    $notes = DB::table('notes')
-        ->latest('id')
+    $notes = Note::latest('id')
         ->get();
 
     return view('notes.index', [
