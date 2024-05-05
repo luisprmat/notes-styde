@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
@@ -7,14 +8,7 @@ Route::get('/home', function () {
 })->name('home');
 
 Route::get('/notas', function () {
-    $notes = [
-        'Primera nota',
-        'Segunda nota',
-        'Tercera nota',
-        'Cuarta nota',
-        'Quinta nota',
-        '<script>alert("Código malicioso")</script>',
-    ];
+    $notes = DB::table('notes')->get();
 
     return view('notes.index', [
         'notes' => $notes,
@@ -30,5 +24,9 @@ Route::get('/notas/crear', function () {
 })->name('notes.create');
 
 Route::get('/notas/{id}/editar', function ($id) {
-    return 'Editar nota: '.$id;
+    $note = DB::table('notes')->find($id);
+
+    abort_if($note === null, 404);
+
+    return '<b>Editar nota:</b> '.$note->title;
 })->name('notes.edit');
