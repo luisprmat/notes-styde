@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveNoteRequest;
 use App\Models\Note;
+use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
@@ -67,9 +68,13 @@ class NoteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Note $note)
+    public function destroy(Request $request, Note $note)
     {
         $note->delete();
+
+        if ($request->ajax()) {
+            return response()->noContent();
+        }
 
         return to_route('notes.index');
     }
