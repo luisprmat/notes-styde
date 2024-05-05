@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot:title>Listado de notas</x-slot>
 
-@section('title', 'Listado de notas')
-
-@section('content')
     <main class="content">
         <div class="cards">
             @forelse ($notes as $note)
@@ -173,4 +171,4 @@ Route::get('/', function () {
             </div>
         </div>
     </main>
-@endsection
+</x-app-layout>
