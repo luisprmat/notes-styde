@@ -40,6 +40,8 @@
             })
 
             const deleteNote = (deleteNoteLink) => {
+                if (!confirm('¿Está seguro de eliminar esta nota?')) return
+
                 const noteCard = deleteNoteLink.closest('.card')
                 const noteId = deleteNoteLink.dataset.jsDeleteNote
                 const deleteNoteUrl = deleteUrlPlaceholder.replace(':id', noteId)
