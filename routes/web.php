@@ -7,7 +7,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/notas', function () {
-    return 'Listado de notas';
+    return view('notes.index');
 });
 
 Route::get('/notas/{id}', function ($id) {
@@ -15,7 +15,7 @@ Route::get('/notas/{id}', function ($id) {
 });
 
 Route::get('/notas/crear', function () {
-    return 'Crear nueva nota';
+    return view('notes.create');
 });
 
 Route::get('/notas/{id}/editar', function ($id) {
