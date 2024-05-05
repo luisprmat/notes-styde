@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Listado de notas')
+
 @section('content')
     <main class="content">
         <div class="cards">
