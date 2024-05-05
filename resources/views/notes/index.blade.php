@@ -30,13 +30,13 @@
         </header>
         <main class="content">
             <div class="cards">
-                <?php foreach ($notes as $note): ?>
+                @forelse ($notes as $note)
                     <div class="card card-small">
                         <div class="card-body">
-                            <h4><?= htmlentities($note) ?></h4>
+                            <h4>{{ $note }}</h4>
 
                             <p>
-                                <?= htmlentities($note) ?>
+                                {{ $note }}
                             </p>
                         </div>
 
@@ -49,7 +49,33 @@
                             </a>
                         </footer>
                     </div>
-                <?php endforeach; ?>
+                @empty
+                    <p>No tenemos notas</p>
+                @endforelse
+
+                <div class="card card-small">
+                    <div class="card-body">
+                        <h4>Aprendiendo blade</h4>
+
+                        <p>
+                            Para imprimir una variable con blade utilizamos esta sintaxis:<br>
+                            <pre>@{{ $mi_variable }}</pre>
+                        </p>
+
+                        <p>
+                            Las directivas de Blade comienzan con el símbolo arroba, por ejemplo: <code>@@foreach</code>
+                        </p>
+                    </div>
+
+                    <footer class="card-footer">
+                        <a class="action-link action-edit">
+                            <i class="icon icon-pen"></i>
+                        </a>
+                        <a class="action-link action-delete">
+                            <i class="icon icon-trash"></i>
+                        </a>
+                    </footer>
+                </div>
                 <div class="card card-small">
                     <div class="card-body">
                         <h4>¿Para qué sirve Composer?</h4>
