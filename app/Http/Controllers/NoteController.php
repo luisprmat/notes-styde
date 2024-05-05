@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveNoteRequest;
 use App\Models\Note;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class NoteController extends Controller
 {
@@ -32,17 +31,9 @@ class NoteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SaveNoteRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'min:5', Rule::unique('notes')],
-            'content' => ['required'],
-        ]);
-
-        Note::create([
-            'title' => $request->input('title'),
-            'content' => $request->input('content'),
-        ]);
+        Note::create($request->validated());
 
         return to_route('notes.index');
     }
@@ -66,17 +57,9 @@ class NoteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Note $note)
+    public function update(SaveNoteRequest $request, Note $note)
     {
-        $request->validate([
-            'title' => ['required', 'min:5', Rule::unique('notes')->ignore($note)],
-            'content' => ['required'],
-        ]);
-
-        $note->update([
-            'title' => $request->input('title'),
-            'content' => $request->input('content'),
-        ]);
+        $note->update($request->validated());
 
         return to_route('notes.index');
     }
