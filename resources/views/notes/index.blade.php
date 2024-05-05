@@ -14,7 +14,7 @@
                     </div>
 
                     <footer class="card-footer">
-                        <a href="{{ url("notas/{$loop->iteration}/editar") }}" class="action-link action-edit">
+                        <a href="{{ route('notes.edit', ['id' => $loop->iteration]) }}" class="action-link action-edit">
                             <i class="icon icon-pen"></i>
                         </a>
                         <a class="action-link action-delete">

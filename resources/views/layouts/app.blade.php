@@ -9,18 +9,18 @@
 <body>
     <div class="wrap">
         <header class="head">
-            <a href="#" class="logo"></a>
+            <a href="{{ route('home') }}" class="logo"></a>
 
             <nav class="main-nav">
                 <ul class="main-nav-list">
                     <li class="main-nav-item active">
-                        <a href="{{ url('notas') }}" class="main-nav-link">
+                        <a href="{{ route('notes.index') }}" class="main-nav-link">
                             <i class="icon icon-th-list"></i>
                             <span>Ver notas</span>
                         </a>
                     </li>
                     <li class="main-nav-item">
-                        <a href="{{ url('notas/crear') }}" class="main-nav-link">
+                        <a href="{{ route('notes.create') }}" class="main-nav-link">
                             <i class="icon icon-pen"></i>
                             <span>Nueva nota</span>
                         </a>
