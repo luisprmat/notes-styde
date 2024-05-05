@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ $title ?? 'App de Notas' }}</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    @vite(['resources/scss/app.scss'])
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
