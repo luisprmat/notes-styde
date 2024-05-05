@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Note;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,16 +13,17 @@ class NoteSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('notes')->insert([
-            'title' => 'Aprendiendo blade',
-            'content' => <<<'CONTENT'
+        $note = new Note;
+        $note->title = 'Aprendiendo blade';
+        $note->content = <<<'CONTENT'
                 Para imprimir una variable con blade utilizamos esta sintaxis:
                 ```
                 {{ $mi_variable }}
                 ```
                 Las directivas de Blade comienzan con el símbolo arroba, por ejemplo: `@foreach`
-                CONTENT,
-        ]);
+                CONTENT;
+
+        $note->save();
 
         DB::table('notes')->insert([
             'title' => '¿Para qué sirve Composer?',
