@@ -11,10 +11,16 @@
                         @csrf
 
                         <label for="title" class="field-label">Título: </label>
-                        <input type="text" name="title" id="title" class="field-input">
+                        <input type="text" name="title" id="title" value="{{ old('title') }}" @class(['field-input', 'field-error' => $errors->has('title')])>
+                        @error('title')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
 
                         <label for="content" class="field-label">Contenido:</label>
-                        <textarea name="content" id="content" rows="10" class="field-textarea"></textarea>
+                        <textarea name="content" id="content" rows="10" @class(['field-textarea', 'field-error' => $errors->has('content')])>{{ old('content') }}</textarea>
+                        @error('content')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
 
                         <button type="submit" class="btn btn-primary">Crear nota</button>
                     </form>
