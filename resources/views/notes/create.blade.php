@@ -7,6 +7,17 @@
                 <div class="card-body">
                     <h1>Nueva nota</h1>
 
+                    @if ($errors->any())
+                        <div class="errors">
+                            <p><strong>El formulario contiene errores, por favor corrígelos e intenta nuevamente:</strong></p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form action="{{ route('notes.store') }}" method="POST">
                         @csrf
 
