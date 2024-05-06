@@ -1,4 +1,4 @@
-<div class="card card-small">
+<div class="card card-{{ $size }}">
     <div class="card-body">
         <h4>{{ $note->title }}</h4>
 
