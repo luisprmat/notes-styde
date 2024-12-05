@@ -1,8 +1,11 @@
+@use "sass:color";
+@use "vars";
+
 .field-label {
     margin-bottom: 4px;
     display: block;
     width: 100%;
-    color: darken($gray, 60%);
+    color: color.adjust(vars.$gray, $lightness: -60%);
 }
 
 .field-input, .field-textarea {
@@ -10,11 +13,11 @@
     margin-bottom: 24px;
     padding: 0.5rem 0.75rem;
     width: 100%;
-    border: 1px solid $gray;
+    border: 1px solid vars.$gray;
     border-radius: 4px;
     font-size: 16px;
-    font-family: $body_font;
-    box-shadow: 0 2px 4px -2px darken($gray, 10%);
+    font-family: vars.$body_font;
+    box-shadow: 0 2px 4px -2px color.adjust(vars.$gray, $lightness: -10%);
 }
 
 .field-textarea {
@@ -24,33 +27,33 @@
 
 .field-input:focus, .field-textarea:focus {
     outline: 0;
-    border: 1px solid lighten($green, 15%);
-    box-shadow: 0 3px 6px -3px $green;
+    border: 1px solid color.adjust(vars.$green, $lightness: 15%);
+    box-shadow: 0 3px 6px -3px vars.$green;
 }
 
 .btn {
     margin-top: 8px;
     padding: 0.75rem;
     font-size: 16px;
-    font-family: $body_font;
+    font-family: vars.$body_font;
     border-radius: 6px;
     cursor: pointer;
 }
 
 .btn-primary {
-    border: 1px solid $green;
-    color: $white;
-    background: $green;
+    border: 1px solid vars.$green;
+    color: vars.$white;
+    background: vars.$green;
 
     &:hover {
-        color: $white;
-        border: 1px solid lighten($green, 10%);
-        background: lighten($green, 10%);
+        color: vars.$white;
+        border: 1px solid color.adjust(vars.$green, $lightness: 10%);
+        background: color.adjust(vars.$green, $lightness: 10%);
     }
 
     &:active {
-        color: $green;
-        border: 1px solid lighten($green, 35%);
-        background: lighten($green, 35%);
+        color: vars.$green;
+        border: 1px solid color.adjust(vars.$green, $lightness: 35%);
+        background: color.adjust(vars.$green, $lightness: 35%);
     }
 }

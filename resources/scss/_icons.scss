@@ -1,3 +1,5 @@
+@use "vars";
+
 .icon {
     display: inline-block;
     background-size: cover;
@@ -43,7 +45,7 @@
 }
 
 .action-edit {
-    border: 1px solid $green;
+    border: 1px solid vars.$green;
 
     .icon {
         filter: invert(24%) sepia(12%) saturate(6113%) hue-rotate(146deg) brightness(94%) contrast(95%)
@@ -51,7 +53,7 @@
 }
 
 .action-delete {
-    border: 1px solid $red;
+    border: 1px solid vars.$red;
 
     .icon {
         filter: invert(16%) sepia(84%) saturate(2940%) hue-rotate(349deg) brightness(88%) contrast(110%);

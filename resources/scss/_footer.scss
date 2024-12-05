@@ -1,18 +1,21 @@
+@use "sass:color";
+@use "vars";
+
 .foot {
     text-align: center;
 
     .ad {
-        background-color: lighten($mirage, 10%);
-        color: $white;
+        background-color: color.adjust(vars.$mirage, $lightness: 10%);
+        color: vars.$white;
     }
 
     .license {
-        background-color: $mirage;
-        color: $light_gray;
+        background-color: vars.$mirage;
+        color: vars.$light_gray;
     }
 
     a {
-        color: $yellow;
+        color: vars.$yellow;
         text-decoration: none;
     }
 

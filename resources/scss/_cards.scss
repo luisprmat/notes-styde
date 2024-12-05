@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "vars";
+
 .cards {
     padding: 8px 16px;
 }
@@ -8,9 +11,9 @@
     justify-content: space-between;
     margin: 0 8px 16px;
     border-radius: 6px;
-    background: $white;
-    color: $mirage;
-    box-shadow: 0 3px 6px -3px darken($gray, 10%);
+    background: vars.$white;
+    color: vars.$mirage;
+    box-shadow: 0 3px 6px -3px color.adjust(vars.$gray, $lightness: -10%);
     &:hover{
         .card-footer a{
             transform: translateY(0);
@@ -26,13 +29,13 @@
 .card-body {
     h1 {
         margin: 0 0 24px;
-        color: $green;
+        color: vars.$green;
         font-size: 24px;
     }
 
     h4 {
         margin: 0 0 16px;
-        color: $green;
+        color: vars.$green;
         font-size: 16px;
     }
 
@@ -47,8 +50,8 @@
     }
 
     code, pre {
-        background: lighten($light_gray, 5%);
-        color: darken($mirage, 5%);
+        background: color.adjust(vars.$light_gray, $lightness: 5%);
+        color: color.adjust(vars.$mirage, $lightness: -5%);
     }
 
     pre {
