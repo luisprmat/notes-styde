@@ -2,9 +2,7 @@
     <div class="card-body">
         <h4>{{ $note->title }}</h4>
 
-        <div>
-            {{ $renderContent }}
-        </div>
+        <div>{{ $renderContent }}</div>
     </div>
 
     <footer class="card-footer">
@@ -18,51 +16,51 @@
 </div>
 
 @pushOnce('scripts')
-<script>
-    const deleteUrlPlaceholder = @js(route('notes.destroy', ':id'));
-    const csrfToken = @js(csrf_token())
+    <script>
+        const deleteUrlPlaceholder = @js(route('notes.destroy', ':id'));
+        const csrfToken = @js(csrf_token());
 
-    document.querySelectorAll('a[data-js-delete-note]').forEach(link => {
-        link.addEventListener('click', (event) => {
-            deleteNote(event.target.closest('a'))
-        })
-    })
+        document.querySelectorAll('a[data-js-delete-note]').forEach((link) => {
+            link.addEventListener('click', (event) => {
+                deleteNote(event.target.closest('a'));
+            });
+        });
 
-    const deleteNote = (deleteNoteLink) => {
-        if (!confirm('¿Está seguro de eliminar esta nota?')) return
+        const deleteNote = (deleteNoteLink) => {
+            if (!confirm('¿Está seguro de eliminar esta nota?')) return;
 
-        const noteCard = deleteNoteLink.closest('.card')
-        const noteId = deleteNoteLink.dataset.jsDeleteNote
-        const deleteNoteUrl = deleteUrlPlaceholder.replace(':id', noteId)
+            const noteCard = deleteNoteLink.closest('.card');
+            const noteId = deleteNoteLink.dataset.jsDeleteNote;
+            const deleteNoteUrl = deleteUrlPlaceholder.replace(':id', noteId);
 
-        noteCard.style.display = 'none'
+            noteCard.style.display = 'none';
 
-        fetch(deleteNoteUrl, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: JSON.stringify({
-                _token: csrfToken
+            fetch(deleteNoteUrl, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: JSON.stringify({
+                    _token: csrfToken,
+                }),
             })
-        })
-        .then(response => {
-            if (response.status !== 204) {
-                restoreNote(noteCard)
-                return
-            }
+                .then((response) => {
+                    if (response.status !== 204) {
+                        restoreNote(noteCard);
+                        return;
+                    }
 
-            noteCard.remove()
-        })
-        .catch(error => {
-            restoreNote(noteCard)
-        })
-    }
+                    noteCard.remove();
+                })
+                .catch((error) => {
+                    restoreNote(noteCard);
+                });
+        };
 
-    const restoreNote = (noteCard) => {
-        alert('Ocurrió un error eliminando la nota.')
-        noteCard.style.display = 'flex'
-    }
-</script>
+        const restoreNote = (noteCard) => {
+            alert('Ocurrió un error eliminando la nota.');
+            noteCard.style.display = 'flex';
+        };
+    </script>
 @endpushOnce

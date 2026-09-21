@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot:title>Nueva nota</x-slot>
+    <x-slot:title>Nueva nota</x-slot:title>
 
     <main class="content">
         <div class="cards">
@@ -9,7 +9,9 @@
 
                     @if ($errors->any())
                         <div class="errors">
-                            <p><strong>El formulario contiene errores, por favor corrígelos e intenta nuevamente:</strong></p>
+                            <p>
+                                <strong>El formulario contiene errores, por favor corrígelos e intenta nuevamente:</strong>
+                            </p>
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -22,13 +24,24 @@
                         @csrf
 
                         <label for="title" class="field-label">Título: </label>
-                        <input type="text" name="title" id="title" value="{{ old('title') }}" @class(['field-input', 'field-error' => $errors->has('title')])>
+                        <input
+                            type="text"
+                            name="title"
+                            id="title"
+                            value="{{ old('title') }}"
+                            @class(['field-input', 'field-error' => $errors->has('title')])
+                        />
                         @error('title')
                             <p class="error-message">{{ $message }}</p>
                         @enderror
 
                         <label for="content" class="field-label">Contenido:</label>
-                        <textarea name="content" id="content" rows="10" @class(['field-textarea', 'field-error' => $errors->has('content')])>{{ old('content') }}</textarea>
+                        <textarea
+                            name="content"
+                            id="content"
+                            rows="10"
+                            @class(['field-textarea', 'field-error' => $errors->has('content')])
+                        >{{ old('content') }}</textarea>
                         @error('content')
                             <p class="error-message">{{ $message }}</p>
                         @enderror

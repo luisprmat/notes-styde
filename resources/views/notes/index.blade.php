@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot:title>Listado de notas</x-slot>
+    <x-slot:title>Listado de notas</x-slot:title>
 
     <main class="content">
         <div class="cards">

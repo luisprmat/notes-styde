@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>{{ $title ?? 'App de Notas' }}</title>
     @vite(['resources/scss/app.scss'])
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
     <div class="wrap">
@@ -15,7 +15,7 @@
                 <ul class="main-nav-list">
                     <li @class([
                         'main-nav-item',
-                        'active' => request()->routeIs('notes.index')
+                        'active' => request()->routeIs('notes.index'),
                     ])>
                         <a href="{{ route('notes.index') }}" class="main-nav-link">
                             <i class="icon icon-th-list"></i>
@@ -24,7 +24,7 @@
                     </li>
                     <li @class([
                         'main-nav-item',
-                        'active' => request()->routeIs('notes.create')
+                        'active' => request()->routeIs('notes.create'),
                     ])>
                         <a href="{{ route('notes.create') }}" class="main-nav-link">
                             <i class="icon icon-pen"></i>
