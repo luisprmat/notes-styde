@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveNoteRequest;
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Mews\Purifier\Facades\Purifier;
 
 class NoteController extends Controller
 {
@@ -44,7 +45,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        return '<b>Detalle de la nota:</b> '.$note->title;
+        return '<b>Detalle de la nota:</b> '.Purifier::clean($note->title);
     }
 
     /**
